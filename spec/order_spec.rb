@@ -35,7 +35,7 @@ RSpec.describe Order, type: :model do
       expect(subject.delivery_start).to eq(false)
     end
 
-    it 'has a cooking start status set to false' do
+    it 'has a delivery complete status set to false' do
       expect(subject.delivery_complete).to eq(false)
     end
 
