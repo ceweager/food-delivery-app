@@ -22,48 +22,48 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid when first name is nil' do
-      expect(new_user.first_name).to_not be_valid
+      new_user.valid?
+      expect(new_user.errors[:first_name]).to include("can't be blank")
     end
 
     it 'is not valid when last name is nil' do
-      expect(new_user.last_name).to_not be_valid
+      new_user.valid?
+      expect(new_user.errors[:last_name]).to include("can't be blank")
     end
 
     it 'is not valid when address is nil' do
-      expect(new_user.address).to_not be_valid
+      new_user.valid?
+      expect(new_user.errors[:address]).to include("can't be blank")
     end
 
     it 'is not valid when email is nil' do
-      expect(new_user.email).to_not be_valid
+      new_user.valid?
+      expect(new_user.errors[:email]).to include("can't be blank")
     end
 
     it 'is not valid when staff is nil' do
-      expect(new_user.staff).to_not be_valid
-    end
-  end
-
-  context 'when email format is invalid' do
-    it 'is not valid when the email is incorrectly formatted' do
-      let(:email) { "Test@test" }
-      expect(email).to_not be_valid
+      new_user.valid?
+      expect(new_user.errors[:staff]).to include("is not included in the list")
     end
   end
 
   context 'when length validations are in place' do
-    let(:first_name) do
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mo"
+    let(:first_username) do
+      User.new(first_name: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mo")
     end
 
-    let(:last_name) do
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mo"
+    let(:last_username) do
+      User.new(last_name: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mo")
     end
 
     it 'is invalid when first name has more than 100 characters' do
-      expect(first_name).to_not be_valid
+      first_username.valid?
+      expect(first_username.errors[:first_name]).to include("can't be blank")
     end
 
     it 'is invalid when last name has more than 100 characters' do
-      expect(last_name).to_not be valid
+      last_username.valid?
+      expect(last_username.errors[:last_name]).to include("can't be blank")
     end
   end
 end
