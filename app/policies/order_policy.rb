@@ -5,8 +5,8 @@ class OrderPolicy < ApplicationPolicy
     end
   end
 
-  def index
-    @orders = policy_scope(Order).order(created_at: :desc)
+  def show?
+    user == record.user
   end
 
   def create?
