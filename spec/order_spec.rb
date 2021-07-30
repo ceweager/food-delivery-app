@@ -5,6 +5,9 @@ RSpec.describe Order, type: :model do
   subject do
     Order.new(user_id: user.id, created: true)
   end
+  it 'will return invalid if no user is given at creation' do
+    expect(Order.new).to_not be_valid
+  end
 
   describe 'when new order is created' do
     it 'has a created status set to true' do

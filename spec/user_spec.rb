@@ -17,29 +17,28 @@ RSpec.describe User, type: :model do
   end
 
   context 'when presence validations are in place' do
-    let(:first_name) { nil }
-    let(:last_name) { nil }
-    let(:address) { nil }
-    let(:email) { nil }
-    let(:staff) { nil }
+    let(:new_user) do
+      User.new
+    end
+
     it 'is not valid when first name is nil' do
-      expect(subject.first_name).to_not be_valid
+      expect(new_user.first_name).to_not be_valid
     end
 
     it 'is not valid when last name is nil' do
-      expect(subject.last_name).to_not be_valid
+      expect(new_user.last_name).to_not be_valid
     end
 
     it 'is not valid when address is nil' do
-      expect(subject.address).to_not be_valid
+      expect(new_user.address).to_not be_valid
     end
 
     it 'is not valid when email is nil' do
-      expect(subject.email).to_not be_valid
+      expect(new_user.email).to_not be_valid
     end
 
     it 'is not valid when staff is nil' do
-      expect(subject.staff).to_not be_valid
+      expect(new_user.staff).to_not be_valid
     end
   end
 
