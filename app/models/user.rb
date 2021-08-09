@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :email, presence: true
   validates :staff, inclusion: [true, false]
+  validates :first_name, length: { maximum: 15 }
+  validates :last_name, length: { maximum: 15 }
 end

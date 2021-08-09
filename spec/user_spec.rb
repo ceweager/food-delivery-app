@@ -49,21 +49,21 @@ RSpec.describe User, type: :model do
 
   context 'when length validations are in place' do
     let(:first_username) do
-      User.new(first_name: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mo")
+      User.new(first_name: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean motee test")
     end
 
     let(:last_username) do
-      User.new(last_name: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mo")
+      User.new(last_name: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean motee test")
     end
 
-    it 'is invalid when first name has more than 100 characters' do
+    it 'is invalid when first name has more than 15 characters' do
       first_username.valid?
-      expect(first_username.errors[:first_name]).to include("can't be blank")
+      expect(first_username.errors[:first_name]).to include("is too long (maximum is 15 characters)")
     end
 
     it 'is invalid when last name has more than 100 characters' do
       last_username.valid?
-      expect(last_username.errors[:last_name]).to include("can't be blank")
+      expect(last_username.errors[:last_name]).to include("is too long (maximum is 15 characters)")
     end
   end
 end
