@@ -1,4 +1,4 @@
-class Api::V1::MealsController < Api::V1::BaseController
+class Api::V1::OrdersController < Api::V1::BaseController
   # before_action :find_user
   before_action :find_basket
   def new

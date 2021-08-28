@@ -31,7 +31,7 @@ class Api::V1::OrderMealsController < Api::V1::BaseController
 
   def create_basket
     @basket = Basket.new
-    @basket.user = current_user
+    @basket.user = @user
     authorize @basket
     @basket.save
   end
