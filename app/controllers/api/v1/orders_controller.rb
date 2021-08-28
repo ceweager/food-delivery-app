@@ -1,5 +1,5 @@
 class Api::V1::MealsController < Api::V1::BaseController
-  before_action :find_user
+  # before_action :find_user
   before_action :find_basket
   def new
     @order = Order.new

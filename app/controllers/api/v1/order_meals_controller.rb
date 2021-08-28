@@ -1,14 +1,14 @@
 class Api::V1::OrderMealsController < Api::V1::BaseController
-  before_action :find_user
+  before_action :find_user, only: [:new, :create]
   def new
     @order_meal = OrderMeal.new
   end
 
   def create
     @order_meal = OrderMeal.new
-    @order_meal.user = current_user
-    create_basket unless current_user.basket
-    @order_meal.basket = current_user.basket
+    @order_meal.user = @user
+    create_basket unless @user.basket
+    @order_meal.basket = @user.basket
     authorize @order_meal
     if @order_meal.save
       render :show, status: :created
@@ -17,7 +17,7 @@ class Api::V1::OrderMealsController < Api::V1::BaseController
     end
   end
 
-  def delete
+  def destroy
     @order_meal = Ordermeal.find(params[:id])
     @order_meal.destroy
     head :no_content
