@@ -9,6 +9,9 @@ class Api::V1::OrderMealsController < Api::V1::BaseController
     @order_meal.user = @user
     create_basket unless @user.basket
     @order_meal.basket = @user.basket
+    if params[:extras]
+      add_extras
+    end
     authorize @order_meal
     if @order_meal.save
       render :show, status: :created
@@ -27,6 +30,15 @@ class Api::V1::OrderMealsController < Api::V1::BaseController
 
   def find_user
     @user = User.find(params[:user])
+  end
+
+  def add_extras
+    params[:extras].each do |extra|
+      @ingredient = OrderIngredient.new
+      @ingredient.ingredient = Ingredient.find(extra)
+      @ingredient.order_meal = @order_meal
+      @ingredient.save!
+    end
   end
 
   def create_basket
