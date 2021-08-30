@@ -1,1 +1,64 @@
 // Specific CSS for your home-page
+.mobile-container{
+  width: 350px;
+  height:650px;
+  border-radius:30px;
+  overflow: hidden;
+  border:none;
+}
+
+.top-background{
+  height:400px;
+  width:100%;
+  background-color: rgb(180, 238, 180);
+  border-radius:30px;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+.bottom-container{
+  position:relative;
+  bottom:100px;
+  right:50px;
+  height: 350px;
+  width:130%;
+  border-radius: 200px 200px 30px 30px;
+  background-color: white;
+  text-align: center;
+
+  h1{
+    letter-spacing: 0.4;
+    font-size: 32px;
+    padding-top: 60px;
+    display:inline-block;
+    font-weight: bold;
+    width: 60%;
+  }
+
+  p{
+    padding-top:16px;
+    display:inline-block;
+    width: 60%;
+  }
+
+  span{
+    font-size: 34px;
+    color: rgb(180, 238, 180);
+  }
+
+  .primary-button{
+    display:block;
+    background-color: rgb(180, 238, 180);
+    color:white;
+    border-radius: 20px;
+    padding: 14px 30px;
+    font-size: 20px;
+    border:none;
+    width: 50%;
+    margin: 20px auto;
+    &:hover{
+      background-color: rgb(138, 199, 138);
+      transition: 0.2s ease-in-out;
+    }
+  }
+}
