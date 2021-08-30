@@ -1,9 +1,9 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Welcome from './welcome_page';
 import Meal from './meals';
-import history from '../history';
+import { createHistory as history } from 'history';
 
 const App = () => {
   return (

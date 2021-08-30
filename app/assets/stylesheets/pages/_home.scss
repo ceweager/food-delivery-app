@@ -5,6 +5,7 @@
   border-radius:30px;
   overflow: hidden;
   border:none;
+  background-image: linear-gradient(rgb(255,255,255), rgb(235,244,223));
 }
 
 .top-background{
@@ -58,7 +59,8 @@
     margin: 20px auto;
     &:hover{
       background-color: rgb(138, 199, 138);
+      text-decoration: none;
       transition: 0.2s ease-in-out;
-    }
+    } 
   }
 }
