@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
 const Meals = () => {
-  const [meals, setMeals] = useState([]);
+  const [allMeals, setMeals] = useState([]);
 
   useEffect(() => {
-    const promise = fetch("http://localhost:3000/api/v1/meals")
-      .then(response => response.json())
+    const fetchMeals = async () => {
+      let promise = await fetch("http://localhost:3000/api/v1/meals")
+        .then(response => response.json());
+      setMeals([promise.meals])
+    }
+    fetchMeals()
   }, [])
+
 
   return (
     <React.Fragment>
       <div className="top-nav">
-        <menu>
+        {/* <menu>
           <login></login>
           <viewdetails></viewdetails>
           <logout></logout>
         </menu>
-        <image></image>
+        <image></image> */}
       </div>
       <h2>Popular Now</h2>
       <div className="Popular"></div>
