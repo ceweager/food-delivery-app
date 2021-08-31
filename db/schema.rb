@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_28_174443) do
+ActiveRecord::Schema.define(version: 2021_08_31_203824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 2021_08_28_174443) do
     t.index ["user_id"], name: "index_baskets_on_user_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
@@ -29,6 +35,15 @@ ActiveRecord::Schema.define(version: 2021_08_28_174443) do
     t.boolean "default", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "meal_ingredients", force: :cascade do |t|
+    t.bigint "meal_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_meal_ingredients_on_ingredient_id"
+    t.index ["meal_id"], name: "index_meal_ingredients_on_meal_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -40,6 +55,8 @@ ActiveRecord::Schema.define(version: 2021_08_28_174443) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_meals_on_category_id"
   end
 
   create_table "order_meals", force: :cascade do |t|
@@ -51,6 +68,15 @@ ActiveRecord::Schema.define(version: 2021_08_28_174443) do
     t.index ["basket_id"], name: "index_order_meals_on_basket_id"
     t.index ["meal_id"], name: "index_order_meals_on_meal_id"
     t.index ["order_id"], name: "index_order_meals_on_order_id"
+  end
+
+  create_table "order_requests", force: :cascade do |t|
+    t.bigint "order_meal_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_order_requests_on_ingredient_id"
+    t.index ["order_meal_id"], name: "index_order_requests_on_order_meal_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -86,8 +112,13 @@ ActiveRecord::Schema.define(version: 2021_08_28_174443) do
   end
 
   add_foreign_key "baskets", "users"
+  add_foreign_key "meal_ingredients", "ingredients"
+  add_foreign_key "meal_ingredients", "meals"
+  add_foreign_key "meals", "categories"
   add_foreign_key "order_meals", "baskets"
   add_foreign_key "order_meals", "meals"
   add_foreign_key "order_meals", "orders"
+  add_foreign_key "order_requests", "ingredients"
+  add_foreign_key "order_requests", "order_meals"
   add_foreign_key "orders", "users"
 end
