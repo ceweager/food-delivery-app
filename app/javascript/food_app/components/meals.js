@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Meals = () => {
+  const [meals, setMeals] = useState([]);
+
+  useEffect(() => {
+    const promise = fetch("http://localhost:3000/api/v1/meals")
+      .then(response => response.json())
+  }, [])
+
   return (
     <React.Fragment>
       <div className="top-nav">
