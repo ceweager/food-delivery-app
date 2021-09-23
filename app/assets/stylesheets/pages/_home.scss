@@ -11,7 +11,7 @@
 .top-background{
   height:400px;
   width:100%;
-  background-color: rgb(180, 238, 180);
+  background-color: $green;
   border-radius:30px;
   padding: 50px 20px;
   box-sizing: border-box;
@@ -44,12 +44,12 @@
 
   span{
     font-size: 34px;
-    color: rgb(180, 238, 180);
+    color: $green;
   }
 
   .primary-button{
     display:block;
-    background-color: rgb(180, 238, 180);
+    background-color: $green;
     color:white;
     border-radius: 20px;
     padding: 14px 30px;

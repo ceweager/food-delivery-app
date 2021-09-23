@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Welcome from './welcome_page';
-import Meal from './meals';
+import Meals from './meals_components/meals';
 import { createHistory as history } from 'history';
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={Welcome} />
-          <Route path="/meals" exact component={Meal} />
+          <Route path="/meals" exact component={Meals} />
         </Switch>
       </Router>
     </div>

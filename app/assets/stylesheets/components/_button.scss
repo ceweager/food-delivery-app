@@ -1,0 +1,18 @@
+.category-button{
+  padding: 8px 16px;
+  background-color: $light-gray;
+  border: none;
+  border-radius: 20px;
+  margin: 2px 5px;
+  text-align:center;
+  transition: 0.2 ease-in-out;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+
+  &:hover{
+    background: green;
+  }
+}
+
+.active-category{
+  background-color: $green;
+}

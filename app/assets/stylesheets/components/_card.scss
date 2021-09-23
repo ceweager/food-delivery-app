@@ -1,0 +1,39 @@
+.small-card{
+  display:flex;
+  flex-direction:column;
+  height:150px;
+  width:120px;
+  box-sizing: border-box;
+  margin:8px 5px;
+  background-color: white;
+  border-radius: 20px;
+  align-items:center;
+  justify-content: space-between;
+  text-align:center;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  h4{
+    display: inline-block;
+    font-size:16px;
+    font-weight: 600;
+  }
+}
+
+.lower-container{
+  height: 50px;
+  h5{
+    font-size:14px;
+    margin:0;
+  }
+}
+
+.scroll-container{
+  display:flex;
+  overflow-x:auto;
+}
+
+.horizontal-scroll{
+  height:520px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding:20px;
+}
