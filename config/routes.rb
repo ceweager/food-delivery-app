@@ -1,7 +1,25 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
+
+  devise_scope :user do
+    # authenticated :user do
+    #   root 'account#show', as: :authenticated_root
+    # end
+  
+    # unauthenticated do
+    #   root 'devise/sessions#new', as: :unauthenticated_root
+    # end
+    # 1: If you put your get_company route here, it still works
+    get '/users/sign_up' => 'registrations#create'
+    get '/users/login' => 'sessions#create'
+  end 
+
   root to: 'pages#home'
+  get 'meals/:id', to: 'pages#home'
   get 'meals', to: 'pages#home'
+  get 'login', to: 'pages#home'
+  get 'sign_up', to: 'pages#home'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

@@ -1,14 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MealCard = ({ name, nickname, calories, price }) => {
+const MealCard = ({ userId, id, name, nickname, calories, price }) => {
   return (
-    <div className="small-card" >
-      <h4>{nickname}</h4>
-      <div className="lower-container">
-        <h5>{name}</h5>
-        <h5>£{price}</h5>
+    <Link to={{
+      pathname: `/meals/${id}`,
+      state: {
+        id: id,
+        userId: userId
+      }
+    }} >
+      <div className="small-card" >
+        <h4>{nickname}</h4>
+        <div className="lower-container">
+          <h5>{name}</h5>
+          <h5>£{price}</h5>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

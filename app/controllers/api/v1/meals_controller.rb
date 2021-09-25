@@ -1,7 +1,7 @@
 class Api::V1::MealsController < Api::V1::BaseController
   before_action :find_meal, only: :show
   def index
-    @meals = if params[:category].present?  && params[:category] != "All"
+    @meals = if params[:category].present? && params[:category] != "All"
                @category = Category.find_by(name: params[:category])
                policy_scope(Meal).where(category_id: @category.id)
              else
@@ -13,6 +13,7 @@ class Api::V1::MealsController < Api::V1::BaseController
   end
 
   def show
+    render json: @meal
   end
 
   private

@@ -1,10 +1,11 @@
 import React from 'react';
 import MealCard from './meal_card';
 
-const MealList = ({ meals }) => {
+const MealList = ({ meals, userId }) => {
   const renderedMeals = meals.map((meal) => {
+    console.log(meal)
     return (
-      <MealCard key={meal.id} name={meal.name} nickname={meal.nickname} price={meal.price} calories={meal.calories} />
+      <MealCard userId={userId} key={meal.id} id={meal.id} name={meal.name} nickname={meal.nickname} price={meal.price} calories={meal.calories} />
     )
   })
 

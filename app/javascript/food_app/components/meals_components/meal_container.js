@@ -13,7 +13,7 @@ const MealContainer = ({ meals, categories }) => {
       const category = categories.find(category => category.id === parseInt(key, 10))
       return (
         <React.Fragment>
-          <h4>{category.name}</h4>
+          <h4>{category.name}s</h4>
           <div className="scroll-container">
             <MealList meals={meals[key]} />
           </div>

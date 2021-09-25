@@ -1,4 +1,4 @@
-.category-button{
+.category-button, .submit-button{
   padding: 8px 16px;
   background-color: $light-gray;
   border: none;
@@ -15,4 +15,33 @@
 
 .active-category{
   background-color: $green;
+}
+
+.menu-button{
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.submit-button{
+  background-color: $green;
+}
+
+.increment-button{
+  margin: 0 auto;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $green;
+  width: 50%;
+  padding: 8px 32px;
+  border-radius: 284px;
+  font-size: 20px;
+}
+.increment-counter {
+  display:flex;
+  justify-content: space-around;
+  cursor: pointer;
+  width: 20%;
+  background-color: $green;
+  border: none;
 }

@@ -1,0 +1,16 @@
+.active-menu{
+  position:relative;
+  width:120%;
+  left: -20px;
+  display:flex;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  flex-direction: column;
+  background-color: $green;
+  z-index: 5;
+}
+
+.inactive-menu{
+  display:none;
+  transition: 1s ease-in-out;
+}
