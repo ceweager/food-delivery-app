@@ -4,6 +4,7 @@ import CategoryList from '../category_components/category_list';
 import MealContainer from './meal_container';
 import MealList from './meal_list';
 import TopNav from '../nav_bar_components/top_nav';
+import BottomNav from '../nav_bar_components/bottom_nav';
 import { checkPropTypes } from 'prop-types';
 
 const Meals = (props) => {
@@ -11,7 +12,6 @@ const Meals = (props) => {
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [popular, setPopular] = useState([]);
-  const [userId, setUserId] = useState("");
   const [userPic, setUserPic] = useState("");
 
   useEffect(() => {
@@ -30,10 +30,10 @@ const Meals = (props) => {
     fetchMeals()
   }, [category])
 
-
+  console.log("meals.js", props)
   return (
     <React.Fragment>
-      <TopNav setUserId={setUserId} setUserPic={setUserPic} userId={userId} userPic={userPic} />
+      <TopNav userId={props.userId} userPic={userPic} basketId={props.basketId} />
       <div className="horizontal-scroll">
         <h4>Popular Now</h4>
         <div className="scroll-container">
@@ -44,7 +44,7 @@ const Meals = (props) => {
         <h4>All Meals</h4>
         <MealContainer meals={allMeals} categories={categories} />
       </div>
-      <div className="bottom-menu"></div>
+      <BottomNav userId={props.userId} basketId={props.basketId} />
     </React.Fragment>
   )
 }

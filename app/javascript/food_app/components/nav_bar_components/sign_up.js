@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { csrfToken } from "@rails/ujs";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [email, setName] = useState("");
   const [pass, setPass] = useState("");
   const [address, setAddress] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  console.log(props)
   const handleSubmit = () => {
     event.preventDefault();
     let promise = fetch("http://localhost:3000/users", {
@@ -33,6 +34,7 @@ const SignUp = () => {
       .then(response => response.json())
       .then(data => {
         props.setUserId(data.id);
+        props.setBasketId(data.basket.id)
         props.location.push('/meals');
       })
   }

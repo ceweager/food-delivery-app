@@ -6,7 +6,7 @@ class SessionsController < Devise::SessionsController
 
     if @user.valid_password?(user_params[:password])
       sign_in :user, @user
-      render json: @user
+      render json: { user: @user, basket: @user.baskets.first }
     else
       invalid_login_attempt
     end

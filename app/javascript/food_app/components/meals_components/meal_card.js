@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MealCard = ({ userId, id, name, nickname, calories, price }) => {
+
   return (
     <Link to={{
       pathname: `/meals/${id}`,

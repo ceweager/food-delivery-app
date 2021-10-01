@@ -6,7 +6,6 @@ const ViewMeal = (props) => {
   const [meal, setMeal] = useState({})
   const [count, setCount] = useState(0)
 
-  console.log(props)
   useEffect(() => {
     const getMeal = async () => {
       const meal = await fetch(`http://localhost:3000/api/v1/meals/${props.match.params.id}`)
@@ -29,6 +28,7 @@ const ViewMeal = (props) => {
           <p>{meal.calories} calories </p>
           <p>{meal.description}</p>
         </div>
+        <IngredientsList mealId={meal.id} />
         <button className="submit-button">Submit</button>
       </form>
     </div>

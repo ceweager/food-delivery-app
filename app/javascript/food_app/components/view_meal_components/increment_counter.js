@@ -6,7 +6,9 @@ const IncrementCounter = (props) => {
   }
 
   const decreaseIncrement = () => {
-    props.setCount(props.count - 1)
+    if (props.count > 0) {
+      props.setCount(props.count - 1)
+    }
   }
 
   return (

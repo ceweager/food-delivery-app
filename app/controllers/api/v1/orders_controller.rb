@@ -38,7 +38,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
   end
 
   def delete_basket
-    @basket.destroy
+    @basket.order_meals.destroy_all
     head :no_content
   end
 

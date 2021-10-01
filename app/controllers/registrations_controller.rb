@@ -3,7 +3,8 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user
+      create_basket
+      render json: { user: @user, basket: @user.baskets.first }
     else
       warden.custom_failure!
       render json: { error: 'signup error' }, status: :unprocessable_entity
@@ -34,5 +35,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:email, :password, :last_name, :first_name, :address, :staff)
+  end
+
+  def create_basket
+    @basket = Basket.new
+    @basket.user = @user
+    @basket.save!
   end
 end

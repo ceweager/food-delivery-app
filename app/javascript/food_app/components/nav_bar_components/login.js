@@ -6,8 +6,7 @@ const Login = (props) => {
   const [email, setName] = useState("")
   const [pass, setPass] = useState("")
 
-  console.log(props)
-  const handleSubmit = (props) => {
+  const handleSubmit = () => {
     event.preventDefault();
     let promise = fetch("http://localhost:3000/users/sign_in", {
       method: 'POST',
@@ -26,10 +25,13 @@ const Login = (props) => {
     })
       .then(response => response.json())
       .then(data => {
-        props.setUserId(data.id)
+        console.log(data);
+        props.setUserId(data.user.id)
+        props.setBasketId(data.basket.id)
         props.history.push('/meals');
       })
   }
+
 
   return (
     <div className="log-in-container">

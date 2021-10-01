@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_203824) do
     t.integer "calories"
     t.integer "time_to_make"
     t.text "description"
-    t.datetime "created_at", precision1: 6, null: false
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id", null: false
     t.index ["category_id"], name: "index_meals_on_category_id"

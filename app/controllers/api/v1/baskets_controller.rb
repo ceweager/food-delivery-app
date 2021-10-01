@@ -1,7 +1,7 @@
 class Api::V1::BasketsController < Api::V1::BaseController
   before_action :find_user
   def show
-    @basket = Basket.find(params[:id])
+    @basket = Basket.where(user: @user)
   end
 
   private

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'meals/:id', to: 'pages#home'
   get 'meals', to: 'pages#home'
   get 'login', to: 'pages#home'
+  get 'users/:user_id/baskets/:id', to: 'pages#home'
   get 'sign_up', to: 'pages#home'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

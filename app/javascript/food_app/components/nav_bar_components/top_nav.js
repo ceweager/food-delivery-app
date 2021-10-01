@@ -11,10 +11,19 @@ const TopNav = (props) => {
         <span className="iconify" data-icon="ci:hamburger"></span>
       </div>
       <div className={activeMenu} >
-        <Link to='/sign_up'>Sign Up</Link>
-        <Link to='/login'>Log in</Link>
-        <div>Profile</div>
-        <div>Log Out</div>
+        {
+          props.userId === "" ?
+            <React.Fragment>
+              <Link to='/login'>Log in</Link>
+              <Link to='/sign_up'>Sign Up</Link>
+            </React.Fragment>
+            :
+            <React.Fragment>
+              <div>Profile</div>
+              <div>Log out</div>
+            </React.Fragment>
+        }
+
       </div>
       <image></image>
     </div>

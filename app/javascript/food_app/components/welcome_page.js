@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Welcome = () => {
+const Welcome = (props) => {
   return (
     <React.Fragment>
       <div className="top-background" >
