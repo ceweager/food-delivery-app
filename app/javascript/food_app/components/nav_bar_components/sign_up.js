@@ -35,7 +35,7 @@ const SignUp = (props) => {
       .then(data => {
         props.setUserId(data.id);
         props.setBasketId(data.basket.id)
-        props.location.push('/meals');
+        props.history.push('/meals');
       })
   }
 

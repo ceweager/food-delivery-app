@@ -4,13 +4,20 @@ import { Link } from 'react-router-dom';
 const BottomNav = (props) => {
   if (props.userId === "") {
     return (
-      <div className="bottom-menu"></div>
+      <div className="bottom-menu">
+        <Link to="/meals">
+          <span className="iconify" data-icon="fa:home"></span>
+        </Link>
+      </div>
     )
   }
   return (
     <div className="bottom-menu">
+      <Link to="/meals">
+        <span className="iconify" data-icon="fa:home"></span>
+      </Link>
       <Link to={`/users/${props.userId}/baskets/${props.basketId}`}>
-        <span class="iconify" data-icon="il:basket"></span>
+        <span className="iconify" data-icon="il:basket"></span>
       </Link>
     </div>
   )

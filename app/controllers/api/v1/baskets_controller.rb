@@ -1,12 +1,16 @@
 class Api::V1::BasketsController < Api::V1::BaseController
-  before_action :find_user
   def show
-    @basket = Basket.where(user: @user)
+    @basket = policy_scope(Basket).find(params[:id])
+    authorize @basket
+    @order_items = @basket.order_meals.group(:meal_id).count.transform_keys do |item|
+      @meal = policy_scope(Meal).find(item)
+      authorize @meal
+      @meal.name
+    end
+    @meals = policy_scope(Meal).all
+    render json: { orderItems: @order_items, meals: @meals }
   end
 
-  private
-
-  def find_user
-    @user = User.find(params[:id])
+  def destroy_order_item
   end
 end

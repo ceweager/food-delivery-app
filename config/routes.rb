@@ -27,7 +27,9 @@ Rails.application.routes.draw do
       resources :meals, only: [ :index, :show ]
 
       resources :users do
-        resources :order_meals, only: [:new, :create]
+        resources :order_meals, only: [:new, :create] do
+          delete :destroy, on: :collection
+        end
         resources :baskets, only: [:show]
         resources :orders, only: [:show] 
       end

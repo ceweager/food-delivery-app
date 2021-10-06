@@ -5,7 +5,6 @@ import MealContainer from './meal_container';
 import MealList from './meal_list';
 import TopNav from '../nav_bar_components/top_nav';
 import BottomNav from '../nav_bar_components/bottom_nav';
-import { checkPropTypes } from 'prop-types';
 
 const Meals = (props) => {
   const [allMeals, setMeals] = useState({});
@@ -30,7 +29,6 @@ const Meals = (props) => {
     fetchMeals()
   }, [category])
 
-  console.log("meals.js", props)
   return (
     <React.Fragment>
       <TopNav userId={props.userId} userPic={userPic} basketId={props.basketId} />
@@ -44,7 +42,7 @@ const Meals = (props) => {
         <h4>All Meals</h4>
         <MealContainer meals={allMeals} categories={categories} />
       </div>
-      <BottomNav userId={props.userId} basketId={props.basketId} />
+      <BottomNav userId={props.userId} basketId={props.basketId} meals={allMeals} />
     </React.Fragment>
   )
 }

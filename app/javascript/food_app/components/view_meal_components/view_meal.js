@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { csrfToken } from "@rails/ujs";
 import IncrementCounter from './increment_counter';
 
 const ViewMeal = (props) => {
   const [meal, setMeal] = useState({})
   const [count, setCount] = useState(0)
-
   useEffect(() => {
     const getMeal = async () => {
       const meal = await fetch(`http://localhost:3000/api/v1/meals/${props.match.params.id}`)
@@ -15,11 +15,36 @@ const ViewMeal = (props) => {
     getMeal();
   }, [])
 
+  const handleSubmit = () => {
+    const postOrderMeal = async () => {
+      event.preventDefault();
+      const orderMeal = await fetch(`http://localhost:3000/api/v1/users/${props.userId}/order_meals`, {
+        method: 'POST',
+        headers: {
+          "X-CSRF-Token": csrfToken(),
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          meal_id: meal.id,
+          count: count,
+          user_id: props.userId
+        })
+      }).then(response => response.json())
+        .then((data) => {
+          props.history.push("/meals");
+        })
+    }
+    postOrderMeal();
+    props.history.push("/meals");
+  }
+  const hidden = (props.userId === "") ? "hidden" : "";
+
   return (
     <div className="view-meal-container">
       <Link to="/meals">Back</Link>
       <img></img>
-      <form className="bottom-weighted-form">
+      <form className="bottom-weighted-form" onSubmit={handleSubmit}>
         <IncrementCounter setCount={setCount} count={count} />
         <div>
           <h1>{meal.name}</h1>
@@ -28,8 +53,7 @@ const ViewMeal = (props) => {
           <p>{meal.calories} calories </p>
           <p>{meal.description}</p>
         </div>
-        <IngredientsList mealId={meal.id} />
-        <button className="submit-button">Submit</button>
+        <button className={`submit-button ${hidden}`}>Submit</button>
       </form>
     </div>
   )

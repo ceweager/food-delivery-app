@@ -13,7 +13,6 @@ class Api::V1::OrdersController < Api::V1::BaseController
     authorize @order
     if @order.save
       update_order_meals
-      delete_basket
       render :show, status: :created
     else
       render_error
@@ -33,13 +32,9 @@ class Api::V1::OrdersController < Api::V1::BaseController
   def update_order_meals
     @basket.order_meals.each do |order_meal|
       order_meal.order = @order
+      order_meal.basket = nil
       order_meal.save
     end
-  end
-
-  def delete_basket
-    @basket.order_meals.destroy_all
-    head :no_content
   end
 
   def find_user

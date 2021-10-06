@@ -15,7 +15,7 @@ const MealContainer = ({ meals, categories }) => {
         <React.Fragment>
           <h4>{category.name}s</h4>
           <div className="scroll-container">
-            <MealList meals={meals[key]} />
+            <MealList key="meals" meals={meals[key]} />
           </div>
         </React.Fragment>
       )

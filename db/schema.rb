@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 2021_08_31_203824) do
 
   create_table "order_meals", force: :cascade do |t|
     t.bigint "meal_id", null: false
-    t.bigint "order_id", null: false
+    t.bigint "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "basket_id", null: false
+    t.bigint "basket_id"
     t.index ["basket_id"], name: "index_order_meals_on_basket_id"
     t.index ["meal_id"], name: "index_order_meals_on_meal_id"
     t.index ["order_id"], name: "index_order_meals_on_order_id"

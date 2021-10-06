@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const TopNav = (props) => {
-  console.log
   const [open, setOpen] = useState(false);
   const activeMenu = (open) ? "active-menu" : "inactive-menu";
   return (
