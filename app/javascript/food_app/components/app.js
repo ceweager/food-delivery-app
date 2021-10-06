@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/meals"
             exact
             render={(props) => (
-              <Meals {...props} userId={userId} basketId={basketId} />
+              <Meals {...props} setUserId={setUserId} userId={userId} basketId={basketId} />
             )}
           >
           </Route>

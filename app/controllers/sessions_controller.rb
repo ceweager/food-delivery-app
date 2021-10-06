@@ -13,6 +13,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def destroy
+    @user = User.find(params[:user_id])
     sign_out(@user)
     render json: { success: true }
   end

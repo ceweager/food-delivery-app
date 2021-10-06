@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     # 1: If you put your get_company route here, it still works
     get '/users/sign_up' => 'registrations#create'
     get '/users/login' => 'sessions#create'
+    get '/users/sign_out' => 'sessions#destroy'
   end 
 
   root to: 'pages#home'
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
           delete :destroy, on: :collection
         end
         resources :baskets, only: [:show]
-        resources :orders, only: [:show] 
+        resources :orders, only: [:show, :new, :create] 
       end
 
       resources :baskets do

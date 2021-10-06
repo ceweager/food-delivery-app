@@ -4,6 +4,16 @@ import { Link } from 'react-router-dom';
 const TopNav = (props) => {
   const [open, setOpen] = useState(false);
   const activeMenu = (open) ? "active-menu" : "inactive-menu";
+
+  const logOut = () => {
+    fetch(`http://localhost:3000/users/sign_out?user_id=${props.userId}`, {
+      method: 'DELETE'
+    });
+    props.setUserId("");
+    props.location.push("/meals");
+  }
+
+  console.log(props);
   return (
     <div className="top-nav">
       <div className="menu-button" onClick={() => { setOpen(!open) }} >
@@ -19,7 +29,7 @@ const TopNav = (props) => {
             :
             <React.Fragment>
               <div>Profile</div>
-              <div>Log out</div>
+              <div className="logout-button" onClick={logOut} >Log out</div>
             </React.Fragment>
         }
 

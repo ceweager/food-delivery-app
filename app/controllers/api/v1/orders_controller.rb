@@ -1,6 +1,5 @@
 class Api::V1::OrdersController < Api::V1::BaseController
-  # before_action :find_user
-  before_action :find_basket
+  before_action :find_user, only: :create
   def new
     @order = Order.new
   end
@@ -9,11 +8,9 @@ class Api::V1::OrdersController < Api::V1::BaseController
     @order = Order.new
     @order.created = true
     @order.submitted = true
-    @order.user = current_user
-    authorize @order
+    @order.user = @user
     if @order.save
       update_order_meals
-      render :show, status: :created
     else
       render_error
     end
@@ -30,15 +27,15 @@ class Api::V1::OrdersController < Api::V1::BaseController
   private
 
   def update_order_meals
-    @basket.order_meals.each do |order_meal|
+    @user.baskets.last.order_meals.each do |order_meal|
       order_meal.order = @order
       order_meal.basket = nil
-      order_meal.save
+      order_meal.save!
     end
   end
 
   def find_user
-    @user = User.find(params[:user])
+    @user = User.find(params[:user_id])
   end
 
   def find_basket

@@ -31,7 +31,7 @@ const Meals = (props) => {
 
   return (
     <React.Fragment>
-      <TopNav userId={props.userId} userPic={userPic} basketId={props.basketId} />
+      <TopNav setUserId={props.setUserId} userId={props.userId} userPic={userPic} basketId={props.basketId} />
       <div className="horizontal-scroll">
         <h4>Popular Now</h4>
         <div className="scroll-container">
