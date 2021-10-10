@@ -1,5 +1,6 @@
 import React from 'react';
 import MealCard from './meal_card';
+import SimpleSlider from '../other_components/simple_slider';
 
 const MealList = ({ meals, userId }) => {
   const renderedMeals = meals.map((meal) => {

@@ -7,7 +7,10 @@ import Login from './nav_bar_components/login';
 import SignUp from './nav_bar_components/sign_up';
 import ViewMeal from './view_meal_components/view_meal';
 import Basket from './basket_components/basket';
+import Order from './order_components/order';
+import OrderList from './order_components/order_list';
 import { createHistory as history } from 'history';
+
 
 const App = () => {
   const [userId, setUserId] = useState("")
@@ -47,6 +50,18 @@ const App = () => {
             exact
             render={(props) => (
               <Basket {...props} userId={userId} basketId={basketId} />
+            )}
+          />
+          <Route path="/users/:user_id/orders/:id"
+            exact
+            render={(props) => (
+              <Order {...props} userId={userId} basketId={basketId} setUserId={setUserId} />
+            )}
+          />
+          <Route path="/users/:user_id/orders/"
+            exact
+            render={(props) => (
+              <OrderList {...props} userId={userId} basketId={basketId} />
             )}
           />
         </Switch>

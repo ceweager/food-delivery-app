@@ -24,7 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 

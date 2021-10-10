@@ -12,8 +12,6 @@ const TopNav = (props) => {
     props.setUserId("");
     props.location.push("/meals");
   }
-
-  console.log(props);
   return (
     <div className="top-nav">
       <div className="menu-button" onClick={() => { setOpen(!open) }} >
@@ -25,10 +23,12 @@ const TopNav = (props) => {
             <React.Fragment>
               <Link to='/login'>Log in</Link>
               <Link to='/sign_up'>Sign Up</Link>
+
             </React.Fragment>
             :
             <React.Fragment>
               <div>Profile</div>
+              <Link to={`/users/${props.userId}/orders`}>Orders</Link>
               <div className="logout-button" onClick={logOut} >Log out</div>
             </React.Fragment>
         }

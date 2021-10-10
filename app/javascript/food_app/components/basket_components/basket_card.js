@@ -22,8 +22,6 @@ const BasketCard = ({ meal, mealCount, userId, total, setTotal }) => {
     setPrice(newPrice);
   }, [count])
 
-  console.log("actual count", count);
-  console.log("count check", countCheck);
   return (
     <div className="basket-row">
       <div className="basket-row">

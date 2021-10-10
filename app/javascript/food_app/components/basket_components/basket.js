@@ -37,7 +37,7 @@ const Basket = (props) => {
         })
       }).then(response => response.json())
         .then((data) => {
-          console.log(data);
+          props.history.push(`/users/${props.userId}/orders/${data.id}`)
         });
     }
     createOrder();

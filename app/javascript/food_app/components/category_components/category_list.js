@@ -1,6 +1,7 @@
 import { each } from 'jquery';
 import React, { useState, useEffect } from 'react';
 import Category from './category';
+import SimpleSlider from '../other_components/simple_slider';
 
 const CategoryList = (props) => {
 
@@ -13,7 +14,7 @@ const CategoryList = (props) => {
         });
     }
     getAllCategories();
-  }, [props.category]);
+  }, []);
 
   const renderedCategories = props.categories.map((category, index) => {
     return (
@@ -22,10 +23,10 @@ const CategoryList = (props) => {
   })
 
   return (
-    <div className="scroll-container">
+    <SimpleSlider>
       <Category key="All" name="All" setCategory={props.setCategory} category={props.category} />
       {renderedCategories}
-    </div>
+    </SimpleSlider>
   )
 
 }

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'login', to: 'pages#home'
   get 'users/:user_id/baskets/:id', to: 'pages#home'
   get 'sign_up', to: 'pages#home'
+  get 'users/:user_id/orders/:id', to: 'pages#home'
+  get 'users/:user_id/orders', to: 'pages#home'
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
           delete :destroy, on: :collection
         end
         resources :baskets, only: [:show]
-        resources :orders, only: [:show, :new, :create] 
+        resources :orders, only: [:index, :show, :new, :create] 
       end
 
       resources :baskets do
