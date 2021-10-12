@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TopNav from '../nav_bar_components/top_nav';
 import BottomNav from '../nav_bar_components/bottom_nav';
-
+import OrderCard from './order_card';
 
 const Order = (props) => {
   const [orderItems, setOrderItems] = useState({});
   const [orderMeals, setOrderMeals] = useState([]);
+  const [total, setTotal] = useState(0);
   const [loaded, setLoading] = useState(false);
-  let total = 0
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -15,9 +15,9 @@ const Order = (props) => {
         .then(response => response.json())
         .then((data) => {
           setLoading(true);
-          console.log(data);
           setOrderItems(data.orderMeals);
           setOrderMeals(data.meals);
+          setTotal(data.total)
         })
         .catch((error) => {
           console.log("Error raised", error)
@@ -25,12 +25,6 @@ const Order = (props) => {
     }
     fetchOrder();
   }, [setOrderMeals]);
-
-  // const updateData = useCallback(function (data) {
-  //   setLoading(true);
-  //   setOrderItems(data.orderMeals);
-  //   setOrderMeals(data.meals);
-  // })
 
   if (!loaded) {
     return (
@@ -51,18 +45,7 @@ const Order = (props) => {
   let renderOrderItems = orderMeals.map((meal) => {
     if (orderItems[`${meal.id}`]) {
       let count = orderItems[`${meal.id}`];
-      let price = parseInt(meal.price, 10) * parseInt(count, 10)
-      total = total + price
-      return (
-        <div>
-          <div>
-            <h3>{meal.nickname}</h3>
-            <p>{meal.description}</p>
-          </div>
-          <h5>{count}</h5>
-          <h5>{parseInt(meal.price, 10) * parseInt(count, 10)}</h5>
-        </div>
-      )
+      return (<OrderCard pic={meal.url} count={count} nickname={meal.nickname} description={meal.description} price={meal.price.toFixed(2)} />)
     } else {
       return "";
     }
@@ -72,8 +55,14 @@ const Order = (props) => {
     <div>
       <TopNav key="top-nav" userId={props.userId} />
       <div className="horizontal-scroll">
+        <h3>Order #{props.match.params.id}</h3>
+        <OrderCard pic="" count="Ordered" nickname="meal" price="£" />
+        <hr />
         {renderOrderItems}
-        {total}
+        <div className="basket-row-footer">
+          <div />
+          <h5>{total.toFixed(2)}</h5>
+        </div>
       </div>
       <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} />
     </div>

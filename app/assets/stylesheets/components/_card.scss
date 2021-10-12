@@ -126,3 +126,18 @@
 .basket-no-items{
   margin: auto;
 }
+
+.order-card-container{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.order-card-price{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120px;
+}
