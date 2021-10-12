@@ -1,11 +1,13 @@
 // Specific CSS for your home-page
 .mobile-container{
   width: 350px;
-  height:650px;
+  height:620px;
   border-radius:30px;
   overflow: hidden;
   border:none;
-  background-image: linear-gradient(rgb(255,255,255), rgb(235,244,223));
+  background-image: linear-gradient(rgb(255,255,255), rgb(218, 250, 176));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .top-background{

@@ -1,3 +1,22 @@
+.horizontal-scroll{
+  position:relative;
+  height:520px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding:10px 20px;
+  h4{
+    margin-top: 10px;
+  }
+}
+
+.meal-list-container{
+  h4{
+    font-size: 20px;
+  }
+}
+
 .small-card{
   display:flex;
   flex-direction:column;
@@ -5,7 +24,7 @@
   width:120px;
   box-sizing: border-box;
   margin:8px 5px;
-  padding: 4px;
+  padding: 0 4px 4px 4px;
   background-color: white;
   border-radius: 20px;
   align-items:center;
@@ -17,11 +36,19 @@
     display: inline-block;
     font-size:16px;
     font-weight: 600;
-    padding-top:5px;
+    padding: 0;
+    margin: 0;
   }
   &:hover{
     background-color: $green;
   }
+}
+
+.small-card-img{
+  width: 120px;
+  height: 70px;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
 .lower-container{
@@ -31,10 +58,8 @@
     margin:0;
   }
 }
-
 .scroll-container{
   display:flex;
-  overflow-x:auto;
   a{
     color: $black;
     transition: 0.2s ease-in-out;
@@ -44,12 +69,17 @@
   }
 }
 
-.horizontal-scroll{
+.pop-container{
   position:relative;
-  height:520px;
-  overflow-y: auto;
-  box-sizing: border-box;
-  padding:20px;
+  left: -10px;
+  width: 107%;
+  padding: 15px;
+  border-radius:30px;
+  background-color: rgba($green, 0.5);
+  h4{
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .basket-row{

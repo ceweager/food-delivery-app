@@ -1,11 +1,10 @@
 import React from 'react';
 import MealCard from './meal_card';
-import SimpleSlider from '../other_components/simple_slider';
 
 const MealList = ({ meals, userId }) => {
   const renderedMeals = meals.map((meal) => {
     return (
-      <MealCard userId={userId} key={meal.id} id={meal.id} name={meal.name} nickname={meal.nickname} price={meal.price} calories={meal.calories} />
+      <MealCard userId={userId} key={meal.id} url={meal.url} id={meal.id} name={meal.name} nickname={meal.nickname} price={meal.price} calories={meal.calories} />
     )
   })
 

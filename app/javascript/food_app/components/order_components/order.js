@@ -4,26 +4,33 @@ import BottomNav from '../nav_bar_components/bottom_nav';
 
 
 const Order = (props) => {
-  const [orderItems, setOrderItems] = useState({ "burger": 1 });
-  const [orderMeals, setOrderMeals] = useState(["Burger"]);
-  const [total, setTotal] = useState(0);
+  const [orderItems, setOrderItems] = useState({});
+  const [orderMeals, setOrderMeals] = useState([]);
   const [loaded, setLoading] = useState(false);
+  let total = 0
 
   useEffect(() => {
     const fetchOrder = async () => {
       const promise = await fetch(`http://localhost:3000/api/v1/users/${props.userId}/orders/${props.match.params.id}`)
-      const response = await promise.json();
-      console.log(response);
-      updateData(response);
+        .then(response => response.json())
+        .then((data) => {
+          setLoading(true);
+          console.log(data);
+          setOrderItems(data.orderMeals);
+          setOrderMeals(data.meals);
+        })
+        .catch((error) => {
+          console.log("Error raised", error)
+        })
     }
     fetchOrder();
-  }, []);
+  }, [setOrderMeals]);
 
-  const updateData = useCallback(function (data) {
-    setLoading(true);
-    setOrderItems(data.orderMeals);
-    setOrderMeals(data.meals);
-  })
+  // const updateData = useCallback(function (data) {
+  //   setLoading(true);
+  //   setOrderItems(data.orderMeals);
+  //   setOrderMeals(data.meals);
+  // })
 
   if (!loaded) {
     return (
@@ -37,20 +44,27 @@ const Order = (props) => {
     )
   }
 
+  // const updateTotal = (price) => {
+  //   setTotal(prevState => prevState + price);
+  // }
+
   let renderOrderItems = orderMeals.map((meal) => {
-    let count = orderItems[`${meal.name}`];
-    setTotal(total + count);
-    if (meal) {
+    if (orderItems[`${meal.id}`]) {
+      let count = orderItems[`${meal.id}`];
+      let price = parseInt(meal.price, 10) * parseInt(count, 10)
+      total = total + price
       return (
         <div>
           <div>
-            <h3>{meal.nickName}</h3>
+            <h3>{meal.nickname}</h3>
             <p>{meal.description}</p>
           </div>
           <h5>{count}</h5>
           <h5>{parseInt(meal.price, 10) * parseInt(count, 10)}</h5>
         </div>
       )
+    } else {
+      return "";
     }
   })
 

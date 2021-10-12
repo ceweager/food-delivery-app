@@ -8,11 +8,8 @@ class Api::V1::OrdersController < Api::V1::BaseController
 
   def show
     @order = policy_scope(Order).find(params[:id])
-    @order_meals = @order.order_meals.group(:meal_id).count.transform_keys do |item|
-      @meal = policy_scope(Meal).find(item)
-      authorize @meal
-      @meal.name
-    end
+    authorize @order
+    @order_meals = @order.order_meals.group(:meal_id).count
     @meals = policy_scope(Meal).all
     render json: { orderMeals: @order_meals, meals: @meals }
   end

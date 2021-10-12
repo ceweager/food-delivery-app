@@ -15,6 +15,9 @@ Ingredient.destroy_all
 puts "Destroying meals"
 Meal.destroy_all
 
+puts "Destroying orders"
+Order.destroy_all
+
 puts "creating categories"
 burger = Category.new( name: "burger" )
 burger.save!
@@ -63,7 +66,8 @@ vegan_burger = Meal.new(
   price: 3.50,
   calories: 250,
   time_to_make: 30,
-  description: "A delicious celebration of all that is vegan"
+  description: "A delicious celebration of all that is vegan",
+  url: "https://www.diannesvegankitchen.com/wp-content/uploads/2019/01/Pizza-square-500x500.jpg"
 )
 
 vegan_burger.category = burger
@@ -77,7 +81,8 @@ vegan_pizza = Meal.new(
   price: 3.50,
   calories: 250,
   time_to_make: 30,
-  description: "A delicious celebration of all that is vegan"
+  description: "A delicious celebration of all that is vegan",
+  url: "https://thumbs.dreamstime.com/b/flat-lay-healthy-vegan-burgers-quinoa-beetroot-patties-avocado-cream-green-sprouts-wooden-board-grey-wall-134457335.jpg"
 )
 vegan_pizza.category = pizza
 vegan_pizza.save!

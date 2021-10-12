@@ -22,8 +22,16 @@ const CategoryList = (props) => {
     )
   })
 
+  const settings = {
+    className: "slider variable-width",
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    variableWidth: true
+  };
+
   return (
-    <SimpleSlider>
+    <SimpleSlider settings={settings}>
       <Category key="All" name="All" setCategory={props.setCategory} category={props.category} />
       {renderedCategories}
     </SimpleSlider>

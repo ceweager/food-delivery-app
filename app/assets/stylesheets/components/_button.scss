@@ -8,15 +8,19 @@
   border-radius: 20px;
   margin: 2px 5px;
   transition: 0.2 ease-in-out;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  // box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
 
   &:hover{
     background: green;
+    color: $white;
   }
 }
 
 .active-category{
   background-color: $green;
+  color: $white;
+  font-weight: bold;
+  letter-spacing:2px;
 }
 
 .menu-button{

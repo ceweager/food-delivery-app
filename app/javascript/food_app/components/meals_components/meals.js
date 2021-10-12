@@ -33,13 +33,15 @@ const Meals = (props) => {
     <React.Fragment>
       <TopNav setUserId={props.setUserId} userId={props.userId} userPic={userPic} basketId={props.basketId} />
       <div className="horizontal-scroll">
-        <h4>Popular Now</h4>
-        <div className="scroll-container">
-          <MealList meals={popular} userId={props.userId} />
+        <h4>popular now</h4>
+        <div className="pop-container">
+          <div className="scroll-container">
+            <MealList meals={popular} userId={props.userId} />
+          </div>
         </div>
-        <h4>Categories</h4>
+        <h4>categories</h4>
         <CategoryList setCategory={setCategory} category={category} setCategories={setCategories} categories={categories} />
-        <h4>All Meals</h4>
+        <h4>all meals</h4>
         <MealContainer meals={allMeals} categories={categories} />
       </div>
       <BottomNav userId={props.userId} basketId={props.basketId} meals={allMeals} />
