@@ -8,8 +8,7 @@ const MealCard = ({ userId, id, name, nickname, calories, price, url }) => {
       pathname: `/meals/${id}`,
       state: {
         id: id,
-        userId: userId,
-        url: url
+        userId: userId
       }
     }} >
       <div className="small-card" >

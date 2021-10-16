@@ -11,6 +11,10 @@ const BottomNav = (props) => {
       </div>
     )
   }
+  let count = "";
+  if (props.basketCount > 0) {
+    count = <div className="basket-count-button">{props.basketCount}</div>;
+  }
   return (
     <div className="bottom-menu">
       <Link to="/meals">
@@ -18,7 +22,7 @@ const BottomNav = (props) => {
       </Link>
       <Link to={`/users/${props.userId}/baskets/${props.basketId}`}>
         <span className="iconify" data-icon="il:basket"></span>
-        <h4>{props.basketCount}</h4>
+        {count}
       </Link>
     </div>
   )

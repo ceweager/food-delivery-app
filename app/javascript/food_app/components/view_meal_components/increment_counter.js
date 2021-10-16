@@ -3,17 +3,11 @@ import React from 'react';
 const IncrementCounter = (props) => {
   const increaseIncrement = () => {
     props.setCount(props.count + 1)
-    if (props.setBasketCount != "") {
-      props.setBasketCount(prevState => prevState + 1)
-    }
   }
 
   const decreaseIncrement = () => {
     if (props.count > 0) {
       props.setCount(props.count - 1)
-      if (props.setBasketCount != "") {
-        props.setBasketCount(prevState => prevState - 1)
-      }
     }
   }
 

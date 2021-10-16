@@ -17,10 +17,12 @@ const BasketCard = ({ meal, mealCount, userId, total, setTotal, pic, setBasketCo
   useEffect(() => {
     if (count > countCheck) {
       createOrderItem(userId, meal, 1);
-      setMealCount(countCheck + 1);
+      setMealCount(prevState => prevState + (count - countCheck));
+      setBasketCount(prevState => prevState + (count - countCheck));
     } else if (count < countCheck) {
       deleteOrderItem(userId, meal);
-      setMealCount(countCheck - 1);
+      setMealCount(prevState => prevState - (countCheck - count));
+      setBasketCount(prevState => prevState - (countCheck - count))
     }
     const newPrice = parseInt(meal.price, 10) * parseInt(count, 10);
     const diff = newPrice - price;
@@ -30,18 +32,19 @@ const BasketCard = ({ meal, mealCount, userId, total, setTotal, pic, setBasketCo
 
   return (
     <div className="basket-row">
-      <div className="basket-row">
-        {picture}
+      {picture}
+      <div className="basket-item-name">
+
         <h4>{meal.nickname}</h4>
-        <div className="small-increment">
-          <IncrementCounter count={count} setCount={setCount} setBasketCount={setBasketCount} />
-        </div>
       </div>
-      <h5>
+      <div className="small-increment">
+        <IncrementCounter count={count} setCount={setCount} />
+      </div>
+      <div className="basket-price">
         {
           `£${price.toFixed(2)}`
         }
-      </h5>
+      </div>
     </div>
   );
 }

@@ -43,10 +43,13 @@ const ViewMeal = (props) => {
   }
   const hidden = (props.userId === "") ? "hidden" : "";
 
+  console.log(count);
   return (
     <div className="view-meal-container">
-      <Link to="/meals">Back</Link>
-      <img></img>
+      <div className="back-button">
+        <Link to="/meals"><span className="iconify" data-icon="ic:baseline-arrow-back"></span></Link>
+      </div>
+      <img src={meal.url} className="view-meal-pic" alt={`pic of ${meal.name}`} />
       <form className="bottom-weighted-form" onSubmit={handleSubmit}>
         <IncrementCounter setCount={setCount} count={count} />
         <div>

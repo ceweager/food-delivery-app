@@ -25,3 +25,10 @@
   margin-right: 10px;
   border-radius: 30px;
 }
+
+.view-meal-pic{
+  position:absolute;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}

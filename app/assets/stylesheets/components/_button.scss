@@ -47,6 +47,7 @@
   padding: 8px 32px;
   border-radius: 284px;
   font-size: 20px;
+  z-index: 5;
 }
 .increment-counter {
   display:flex;
@@ -73,5 +74,35 @@
   opacity: 0.8;
   &:hover{
     opacity: 1;
+  }
+}
+
+.basket-count-button{
+  position: absolute;
+  font-size: 10px;
+  color: rgba(0,0,0,0.6);
+  font-weight: lighter;
+  background-color: $green;
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  top: 15px;
+  right: 16px;
+  text-align: center;
+}
+
+.back-button{
+  display:block;
+  width: 95%;
+  padding: 10px;
+  font-size: 26px;
+  text-align: left;
+  z-index:5;
+  a{
+    padding: 5px 10px;
+    background-color: rgba($black, 0.3);
+    border-radius: 50%;
+    color: $white;
   }
 }

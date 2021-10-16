@@ -12,7 +12,6 @@ class Api::V1::OrderMealsController < Api::V1::BaseController
       @order_meal.basket = @user.baskets.first
       add_extras if params[:extras]
       @order_meal.save
-      authorize @order_meal
     end
     render json: @user.baskets.first.order_meals
   end

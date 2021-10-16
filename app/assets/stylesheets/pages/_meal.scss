@@ -1,5 +1,6 @@
 .view-meal-container{
   height:100%;
+  position:relative;
   width:100%;
   background-color: $green;
   display:flex;
@@ -13,7 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align:center;
-  height:65%;
+  height:59%;
   width:100%;
   padding: 20px;
   border-radius:20px;

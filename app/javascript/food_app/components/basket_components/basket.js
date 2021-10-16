@@ -17,6 +17,7 @@ const Basket = (props) => {
         .then(data => {
           setOrderItems(data.orderItems);
           setMeals(data.meals);
+          // setTotal(data.total);
         });
     }
     fetchBasket();
@@ -37,6 +38,7 @@ const Basket = (props) => {
         })
       }).then(response => response.json())
         .then((data) => {
+          props.setBasketCount(0);
           props.history.push(`/users/${props.userId}/orders/${data.id}`)
         });
     }
