@@ -20,8 +20,8 @@ const OrderList = (props) => {
   return (
     <div>
       <TopNav key="top-nav" userId={props.userId} />
-      <h2>Your Order History</h2>
       <div className="horizontal-scroll">
+        <h2>Your Order History</h2>
         {orderList.map((order) => {
           let orderStatus = "Inactive"
           let orderStatusClass = "inactive-order"

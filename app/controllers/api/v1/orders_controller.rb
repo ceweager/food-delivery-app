@@ -12,11 +12,15 @@ class Api::V1::OrdersController < Api::V1::BaseController
     @order_meals = @order.order_meals.group(:meal_id).count
     @total = 0
     @meals = policy_scope(Meal).all.map do |meal|
-      @count = @order_meals[meal.id]
-      @price = @count * meal.price
-      @total += @price
-      meal.price = @price
-      meal
+      if @order_meals[meal.id]
+        @count = @order_meals[meal.id]
+        @price = @count * meal.price
+        @total += @price
+        meal.price = @price
+        meal
+      else
+        meal
+      end
     end
     render json: { meals: @meals, total: @total, orderMeals: @order_meals }
   end

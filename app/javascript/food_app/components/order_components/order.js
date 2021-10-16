@@ -64,7 +64,7 @@ const Order = (props) => {
           <h5>{total.toFixed(2)}</h5>
         </div>
       </div>
-      <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} />
+      <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} basketCount={props.basketCount} />
     </div>
   )
 }

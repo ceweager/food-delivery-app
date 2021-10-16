@@ -41,10 +41,9 @@ const Meals = (props) => {
         </div>
         <h4>categories</h4>
         <CategoryList setCategory={setCategory} category={category} setCategories={setCategories} categories={categories} />
-        <h4>all meals</h4>
         <MealContainer meals={allMeals} categories={categories} />
       </div>
-      <BottomNav userId={props.userId} basketId={props.basketId} meals={allMeals} />
+      <BottomNav userId={props.userId} basketId={props.basketId} meals={allMeals} basketCount={props.basketCount} />
     </React.Fragment>
   )
 }

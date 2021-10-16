@@ -32,10 +32,13 @@ const ViewMeal = (props) => {
         })
       }).then(response => response.json())
         .then((data) => {
-          props.history.push("/meals");
+          console.log(count);
+          props.setBasketCount(prevState => prevState + count);
+          // props.history.push("/meals");
         })
     }
     postOrderMeal();
+    props.setBasketCount(prevState => prevState + count);
     props.history.push("/meals");
   }
   const hidden = (props.userId === "") ? "hidden" : "";

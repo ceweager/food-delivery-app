@@ -17,7 +17,7 @@ const MealCard = ({ userId, id, name, nickname, calories, price, url }) => {
         <h4>{nickname}</h4>
         <div className="lower-container">
           <h5>{name}</h5>
-          <h5>£{price}</h5>
+          <h4><span className="bold-price">£</span>{price}</h4>
         </div>
       </div>
     </Link>

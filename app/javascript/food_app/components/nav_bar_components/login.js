@@ -25,9 +25,9 @@ const Login = (props) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         props.setUserId(data.user.id)
         props.setBasketId(data.basket.id)
+        props.setBasketCount(data.basketCount)
         props.history.push('/meals');
       })
   }

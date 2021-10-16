@@ -45,7 +45,7 @@ const Basket = (props) => {
 
   let renderBasketItems = meals.map((meal, index) => {
     if (orderItems[meal.name]) {
-      return (<BasketCard key={index} meal={meal} mealCount={orderItems[meal.name]} userId={props.userId} total={total} setTotal={setTotal} />)
+      return (<BasketCard setBasketCount={props.setBasketCount} key={index} meal={meal} pic={meal.url} mealCount={orderItems[meal.name]} userId={props.userId} total={total} setTotal={setTotal} />)
     } else {
       return "";
     }
@@ -71,13 +71,13 @@ const Basket = (props) => {
           <div>
           </div>
           <div>
-            <h4>£{total}</h4>
+            <h4>£{total.toFixed(2)}</h4>
           </div>
         </div>
         <button className="submit-button right-button" onClick={handleSubmit}>Submit Order</button>
       </div>
 
-      <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} />
+      <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} basketCount={props.basketCount} />
     </div>
   )
 }
