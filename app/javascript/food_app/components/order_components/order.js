@@ -56,12 +56,12 @@ const Order = (props) => {
       <TopNav key="top-nav" userId={props.userId} />
       <div className="horizontal-scroll">
         <h3>Order #{props.match.params.id}</h3>
-        <OrderCard pic="" count="Ordered" nickname="meal" price="£" />
+        <OrderCard pic="" count="Ordered" nickname="meal" price="" />
         <hr />
         {renderOrderItems}
         <div className="basket-row-footer">
           <div />
-          <h5>{total.toFixed(2)}</h5>
+          <h5>£{total.toFixed(2)}</h5>
         </div>
       </div>
       <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} basketCount={props.basketCount} />

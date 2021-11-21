@@ -8,7 +8,7 @@ const Welcome = (props) => {
         <img src="https://i.imgur.com/K6Qn8Jy.png" alt="salad" />
       </div>
       <div className="bottom-container">
-        <h1>The Freshest In Vegan <span>Food</span></h1>
+        <h1>The Freshest In Fast <span>Food</span></h1>
         <p>Our job is filling your tummy with delicious food and fast delivery</p>
         <Link to={'/meals'} className="primary-button">Get Started</Link>
       </div>

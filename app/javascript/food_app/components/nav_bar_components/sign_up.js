@@ -47,7 +47,7 @@ const SignUp = (props) => {
         <input type="password" id="password" placeholder="password" onChange={(e) => { setPass(e.target.value) }} />
         <input id="first_name" placeholder="first_name" onChange={(e) => { setFirstName(e.target.value) }} />
         <input id="last_name" placeholder="last_name" onChange={(e) => { setLastName(e.target.value) }} />
-        <textarea id="address" placeholder="paddress" onChange={(e) => { setAddress(e.target.value) }} />
+        <textarea id="address" placeholder="address" onChange={(e) => { setAddress(e.target.value) }} />
         <button className="submit-button">Submit</button>
       </form>
     </div>

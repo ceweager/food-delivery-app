@@ -3,12 +3,12 @@ class Api::V1::MealsController < Api::V1::BaseController
   def index
     @meals = if params[:category].present? && params[:category] != "All"
                @category = Category.find_by(name: params[:category])
-               policy_scope(Meal).where(category_id: @category.id)
+               policy_scope(Meal).all.where(category_id: @category.id)
              else
                policy_scope(Meal)
              end
     @categories = Category.all
-    @popular = policy_scope(Meal).left_joins(:order_meals).group(:id).order('COUNT(order_meals.id) DESC').limit(5)
+    @popular = policy_scope(Meal).left_joins(:order_meals).group(:id).order('COUNT(order_meals.id) DESC').limit(3)
     render json: { meals: @meals, categories: @categories, popular: @popular }
   end
 

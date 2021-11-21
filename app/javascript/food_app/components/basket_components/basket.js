@@ -57,26 +57,34 @@ const Basket = (props) => {
     <div>
       <TopNav key="top-nav" userId={props.userId} />
       <div className="horizontal-scroll">
-        <h4>Your Basket</h4>
-        <div className="basket-row-header">
+        <h4>My Basket</h4>
+        {/* <div className="basket-row-header">
           <div>
             <h5>Meal Name</h5>
           </div>
           <div>
             <h6>Price (GBP)</h6>
           </div>
-        </div>
+        </div> */}
         <div className="basket-row-container">
-          {renderBasketItems}
+          {Object.keys(orderItems).length < 1 ? <div className="no-items-basket"><h5>No items yet!</h5></div> : renderBasketItems}
+        </div>
+        <div className="basket-row">
+          Subtotal
+          <div className="basket-price">£{total.toFixed(2)}</div>
+        </div>
+        <div className="basket-row">
+          <div>Service fee <span className="info-bubble">?</span></div>
+          <div className="basket-price">£{total.toFixed(2) > 20 ? (2).toFixed(2) : (total * 0.10).toFixed(2)}</div>
         </div>
         <div className="basket-row-footer">
           <div>
+            Total
           </div>
-          <div>
-            <h4>£{total.toFixed(2)}</h4>
-          </div>
+
+          <div className="basket-price">£{total.toFixed(2) > 20 ? (total + 2).toFixed(2) : (total + total * 0.10).toFixed(2)}</div>
         </div>
-        <button className="submit-button right-button" onClick={handleSubmit}>Submit Order</button>
+        <button className={`order-button ${Object.keys(orderItems).length < 1 ? 'hidden' : ''}`} onClick={handleSubmit}>Submit Order</button>
       </div>
 
       <BottomNav key="bottom-nav" userId={props.userId} basketId={props.basketId} basketCount={props.basketCount} />

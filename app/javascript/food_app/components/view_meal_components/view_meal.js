@@ -42,8 +42,6 @@ const ViewMeal = (props) => {
     props.history.push("/meals");
   }
   const hidden = (props.userId === "") ? "hidden" : "";
-
-  console.log(count);
   return (
     <div className="view-meal-container">
       <div className="back-button">
@@ -53,9 +51,9 @@ const ViewMeal = (props) => {
       <form className="bottom-weighted-form" onSubmit={handleSubmit}>
         <IncrementCounter setCount={setCount} count={count} />
         <div>
-          <h1>{meal.name}</h1>
           <h3>{meal.nickname}</h3>
-          <h4>£{meal.price}</h4>
+          <h6>{meal.name}</h6>
+          <h3>£{meal.price}</h3>
           <p>{meal.calories} calories </p>
           <p>{meal.description}</p>
         </div>

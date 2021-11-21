@@ -20,10 +20,10 @@ const Meals = (props) => {
         .then(data => {
           const meals_hash = {}
           data.meals.forEach((meal) => {
-            meals_hash[meal.category_id] ? meals_hash[meal.category_id] << meal : meals_hash[meal.category_id] = [meal]
+            meals_hash[meal.category_id] ? meals_hash[meal.category_id].push(meal) : meals_hash[meal.category_id] = [meal]
           })
-          setMeals(meals_hash)
-          setPopular(data.popular)
+          setMeals(meals_hash);
+          setPopular(data.popular);
         })
     }
     fetchMeals()
@@ -36,7 +36,7 @@ const Meals = (props) => {
         <h4>popular now</h4>
         <div className="pop-container">
           <div className="scroll-container">
-            <MealList meals={popular} userId={props.userId} />
+            <MealList meals={popular} userId={props.userId} cardSize="small-card" />
           </div>
         </div>
         <h4>categories</h4>

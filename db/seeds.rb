@@ -61,17 +61,33 @@ lettuce.save!
 puts "creating meals"
 
 vegan_burger = Meal.new(
+  name: "Cheese Burger",
+  nickname: "Cheezy McBreezie",
+  price: 3.50,
+  calories: 250,
+  time_to_make: 30,
+  description: "So much cheese, you'll think you're in Switzerland",
+  url: "https://www.kitchensanctuary.com/wp-content/uploads/2021/05/Double-Cheeseburger-square-FS-42.jpg"
+)
+
+vegan_burger.category = burger
+vegan_burger.save!
+
+vegan_burger = Meal.new(
   name: "Vegan Burger",
   nickname: "The VEGANATOR",
   price: 3.50,
   calories: 250,
   time_to_make: 30,
   description: "A delicious celebration of all that is vegan",
-  url: "https://www.diannesvegankitchen.com/wp-content/uploads/2019/01/Pizza-square-500x500.jpg"
+  url: "https://thumbs.dreamstime.com/b/flat-lay-healthy-vegan-burgers-quinoa-beetroot-patties-avocado-cream-green-sprouts-wooden-board-grey-wall-134457335.jpg"
 )
 
 vegan_burger.category = burger
 vegan_burger.save!
+
+puts "#{vegan_burger.name} created"
+
 
 puts "#{vegan_burger.name} created"
 
@@ -81,8 +97,36 @@ vegan_pizza = Meal.new(
   price: 3.50,
   calories: 250,
   time_to_make: 30,
-  description: "A delicious celebration of all that is vegan",
-  url: "https://thumbs.dreamstime.com/b/flat-lay-healthy-vegan-burgers-quinoa-beetroot-patties-avocado-cream-green-sprouts-wooden-board-grey-wall-134457335.jpg"
+  description: "Looks like a mess, tastes like a dream",
+  url:  "https://www.diannesvegankitchen.com/wp-content/uploads/2019/01/Pizza-square-500x500.jpg"
+)
+vegan_pizza.category = pizza
+vegan_pizza.save!
+
+puts "#{vegan_pizza.name} created"
+
+vegan_pizza = Meal.new(
+  name: "Pepperoni Pizza",
+  nickname: "Pepperini",
+  price: 3.50,
+  calories: 250,
+  time_to_make: 30,
+  description: "Spicy, tasty, can't beat a classic",
+  url:  "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F07%2F10%2Fpepperoni-pizza-ck-x.jpg"
+)
+vegan_pizza.category = pizza
+vegan_pizza.save!
+
+puts "#{vegan_pizza.name} created"
+
+vegan_pizza = Meal.new(
+  name: "Hawaiian Pizza",
+  nickname: "Marmite",
+  price: 3.50,
+  calories: 250,
+  time_to_make: 30,
+  description: "Love it or hate it, hawaiian is here to stay",
+  url:  "https://img.kidspot.com.au/pZnR2nZu/kk/2015/03/hawaiian-pizza-recipe-605894-2.jpg"
 )
 vegan_pizza.category = pizza
 vegan_pizza.save!

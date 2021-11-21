@@ -32,9 +32,7 @@ const BasketCard = ({ meal, mealCount, userId, total, setTotal, pic, setBasketCo
 
   return (
     <div className="basket-row">
-      {picture}
       <div className="basket-item-name">
-
         <h4>{meal.nickname}</h4>
       </div>
       <div className="small-increment">

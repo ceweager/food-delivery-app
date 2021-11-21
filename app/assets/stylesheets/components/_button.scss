@@ -15,6 +15,9 @@
     color: $white;
   }
 }
+.category-button{
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+}
 
 .active-category{
   background-color: $green;
@@ -30,6 +33,21 @@
 
 .submit-button{
   background-color: $green;
+}
+
+.order-button{
+  background-color: $green;
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 10px;
+  border:none;
+  transition: 0.2 ease-in-out;
+  // box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+
+  &:hover{
+    background: green;
+    color: $white;
+  }
 }
 
 .hidden{
@@ -61,12 +79,6 @@
 .small-increment{
   width: 100px;
   height: 50px;
-}
-
-
-.right-button{
-  position: relative;
-  left: 175px;
 }
 
 .logout-button{
@@ -104,5 +116,22 @@
     background-color: rgba($black, 0.3);
     border-radius: 50%;
     color: $white;
+  }
+}
+
+.info-bubble{
+  border-radius: 50%;
+  color: $green;
+  padding: 1px 5px;
+  margin-left: 2px;
+  font-size: 12px;
+  border: 1px solid $green;
+  text-align:center;
+  transition: 0.2s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    background: green;
+    border:none;
+    color: white;
   }
 }

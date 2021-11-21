@@ -10,11 +10,12 @@ const OrderCard = ({ description, nickname, count, price, pic }) => {
 
   return (
     <div className="order-card-container">
-      {picture}
-      <h5>{nickname}</h5>
+      <div className="basket-item-name">
+        <h6>{nickname}</h6>
+      </div>
       <div className="order-card-price">
         <h6>{count}</h6>
-        <h5>{price}</h5>
+        <div className="basket-price">£{price}</div>
       </div>
     </div>
   )

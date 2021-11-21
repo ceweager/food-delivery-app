@@ -10,7 +10,6 @@ const MealContainer = ({ meals, categories }) => {
       </div>
     )
   } else {
-
     const settings = {
       speed: 500,
       slidesToShow: 1,
@@ -19,11 +18,11 @@ const MealContainer = ({ meals, categories }) => {
     const renderedMeals = Object.keys(meals).map((key) => {
       const category = categories.find(category => category.id === parseInt(key, 10))
       return (
-        <div className="meal-list-container">
-          <h4>{category.name}s</h4>
+        <div key={`meal-${key}`} className="meal-list-container">
+          <h4 className="mb-2 mt-3">{category.name}s</h4>
           <div className="scroll-container">
             <SimpleSlider settings={settings}>
-              <MealList key="meals" meals={meals[key]} />
+              <MealList key={key} meals={meals[key]} cardSize="big-card" />
             </SimpleSlider>
           </div>
         </div>
